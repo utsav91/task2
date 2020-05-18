@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateMinimumBills, removeBill, minimumBillsLength } from "./dashboardSlice";
+import { updateMinimumBills, minimumBillsLength } from "./dashboardSlice";
 
 export const MinimumBills = () => {
   const [budget, setBudget] = useState(0);
