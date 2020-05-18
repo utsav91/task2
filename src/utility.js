@@ -1,5 +1,5 @@
 export const formatDate = (date, forChart = false) => {
-  date = new Date(date);
+  date = new Date(formatDateForInput(date));
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   let day = date.getDate();
@@ -7,7 +7,6 @@ export const formatDate = (date, forChart = false) => {
   let monthIndex = date.getMonth();
   if (forChart) return "" + day + " " + months[monthIndex];
   let year = date.getFullYear();
-
   return "" + day + " " + months[monthIndex] + " " + year;
 };
 
@@ -16,10 +15,10 @@ export const buildChartData = (bills) => {
     return {
       ...bill,
       amount: +bill.amount,
-      xAxis: formatDate(bill.date, true),
+      xAxis: formatDate(formatDateForInput(bill.date), true),
     };
   });
-  return clone.sort((a, b) => new Date(a.date) - new Date(b.date));
+  return clone.sort((a, b) => new Date(formatDateForInput(a.date)) - new Date(formatDateForInput(b.date)));
 };
 
 export const isValidText = (value) => {
