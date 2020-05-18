@@ -16,7 +16,7 @@ export const MinimumBills = () => {
     <div className="b-minimum-bills">
       <div className="b-minimum-bills__input">
         Enter Budget : <input type="number" value={budget} onChange={updateBudget} />
-        <div className="b-minimum-bills__subtext">Number of funds(n) that can be paid : {n}</div>
+        <div className="b-minimum-bills__subtext">Number of bills(n) that can be paid : {n}</div>
       </div>
       <div className="b-minimum-bills__action">
         <button onClick={findMinimumBills}>Highlight bills</button>
