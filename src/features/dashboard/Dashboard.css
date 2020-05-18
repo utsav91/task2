@@ -39,8 +39,8 @@
 .b-bill-list {
   border-radius: 16px;
   border: solid 1px #e0e0e0;
-  min-height: 188px;
-  min-width: 450px;
+  min-height: 300px;
+  min-width: 650px;
   position: relative;
 }
 .b-bill-list__total {

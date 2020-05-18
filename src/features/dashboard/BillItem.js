@@ -4,7 +4,6 @@ import {
   removeBill
 } from "./dashboardSlice";
 import { formatDate } from '../../utility';
-// import './Dashboard.module.css';
 
 export function BillItem ({ id, description, category, amount, date, shouldHighLight, handleEdit }) {
   const dispatch = useDispatch();
@@ -15,14 +14,6 @@ export function BillItem ({ id, description, category, amount, date, shouldHighL
   const handleRemoveClick = () => {
     dispatch(removeBill(id))
   }
-
-//   const getformattedDate = (date) => {
-//     let todayTime = new Date(date);
-//     let month = todayTime .getMonth() + 1;
-//     let day = todayTime .getDate();
-//     let year = todayTime .getFullYear();
-//     return month + "/" + day + "/" + year;
-// }
   return (
     <div className={`b-bill-item ${shouldHighLight ? 'highlight' : ''}`}>
       <div className="b-bill-item__info">

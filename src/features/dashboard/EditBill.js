@@ -64,7 +64,7 @@ export const EditBill = ({ id = "", description = "", amount = "", date = "", ca
   return (
     <div className="b-edit-bill">
       <div className="b-edit-bill__input">
-      <span className="b-edit-bill__label">Date :</span> <input type="date" value={formatDateForInput(bill.date)} name="date" onChange={updateField} />
+      <span className="b-edit-bill__label">Date :</span> <input type="date" value={formatDateForInput(bill.date)} name="date" onChange={updateField} min="2020-05-01" max="2020-05-31"/>
       </div>
       <div className="b-edit-bill__input">
         <span className="b-edit-bill__label">Description :</span> <input type="text" value={bill.description} name="description" onChange={updateField}  />
