@@ -36,7 +36,7 @@ export const EditBill = ({ id = "", description = "", amount = "", date = "", ca
   };
 
   const checkValidation = () => {
-    if(!(isValidText(bill.description) || isValidText(bill.category))) {
+    if(!(isValidText(bill.description) && isValidText(bill.category))) {
       setError('Description & category can contain alphabets only');
       return false;
     }

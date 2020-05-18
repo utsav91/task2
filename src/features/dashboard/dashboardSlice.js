@@ -9,19 +9,10 @@ export const dashboardSlice = createSlice({
     loading: "idle",
   },
   reducers: {
-    increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
     billsLoading(state, action) {
       // Use a "state machine" approach for loading state instead of booleans
       if (state.loading === "idle") {
@@ -51,7 +42,7 @@ export const dashboardSlice = createSlice({
     updateMinimumBills(state, action){
       let budget = action.payload;
       state.bills.forEach(bill => {
-        if(+bill.amount < +budget){
+        if(+bill.amount <= +budget){
           budget = budget - bill.amount;
           bill.shouldHighLight = true;
         }else {
@@ -64,9 +55,6 @@ export const dashboardSlice = createSlice({
 });
 
 export const {
-  increment,
-  decrement,
-  incrementByAmount,
   billsLoading,
   billsReceived,
   updateBill,
@@ -75,6 +63,10 @@ export const {
   updateMinimumBills,
 } = dashboardSlice.actions;
 
+// The function below is called a thunk and allows us to perform async logic. It
+// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
+// will call the thunk with the `dispatch` function as the first argument. Async
+// code can then be executed and other actions can be dispatched
 export const fetchBills = () => async (dispatch) => {
   dispatch(billsLoading());
   let response = await getBills();
@@ -82,17 +74,6 @@ export const fetchBills = () => async (dispatch) => {
     bill.shouldHighLight = false
   })
   dispatch(billsReceived(response));
-};
-
-
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched
-export const incrementAsync = (amount) => (dispatch) => {
-  setTimeout(() => {
-    dispatch(incrementByAmount(amount));
-  }, 1000);
 };
 
 // The function below is called a selector and allows us to select a value from

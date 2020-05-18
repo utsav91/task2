@@ -161,3 +161,10 @@ button {
 .b-minimum-bills__subtext {
   margin-top: 16px;
 }
+
+.custom-tooltip {
+  background-color: #ffffff;
+  box-shadow: 0 0 6px 0 rgba(63, 81, 102, 0.16);
+  border-radius: 16px;
+  padding: 8px;
+}
